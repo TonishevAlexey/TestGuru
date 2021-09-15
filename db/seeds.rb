@@ -9,6 +9,11 @@ User.create(name: "Alex")
 User.create(name: "Oleg")
 
 Category.create(title: "Ruby1")
-Test.create(title:"Rails",category_id: 1,user_id: 1)
-Question.create(title:"Rails model",test_id: 1)
-Answer.create(body: "123",question_id:1)
+category = Category.first
+user = User.first
+Test.create(title: "Rails", category_id: category.id)
+test = Test.first
+Question.create(title: "Rails model")
+answer = Answer.first
+Answer.create(body: "123", question_id: answer.id)
+UserTest.create(user_id: user, test_id: test)
