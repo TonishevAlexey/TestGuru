@@ -1,0 +1,6 @@
+<h1>Вопрос <%= @question.id %></h1>
+<p>Тест: <%= @question.test.title %></p>
+<p>Содержание: <%= @question.title %></p>
+<p><%= link_to 'Редактировать', edit_question_path(@question) %></p>
+<%= link_to 'Назад', test_path(@question.test) %>
+
