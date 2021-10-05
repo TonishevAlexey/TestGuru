@@ -1,0 +1,10 @@
+<% if resource.errors.present? %>
+  <div class="errors">
+    <h3> <%= t('validate_errors.error', count: resource.errors.count) %>: </h3>
+    <% resource.errors.full_messages.each do |message| %>
+      <ul>
+        <li> <%= message %> </li>
+      </ul>
+    <% end %>
+  </div>
+<% end %>

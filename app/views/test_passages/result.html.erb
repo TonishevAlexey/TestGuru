@@ -1,0 +1,9 @@
+<h1>Результаты теста <%= @test_passage.test.title %> </h1>
+
+<% @completed = @test_passage.completed? %>
+
+<p>Правильных ответов <span><%= @test_passage.current_questions %>/<%= @test_passage.test.questions.count %></span></p>
+<p><span style=color:<%= @completed ? 'green' : 'red' %>><%= @completed ? 'Тест  пройден!' : 'Тест не пройден' %></span></p>
+</p>
+
+<p><%= link_to 'Все тесты', tests_path %></p>
