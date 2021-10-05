@@ -1,8 +1,8 @@
-class TestsController < ActionController::Base
+class TestsController < ApplicationController
   before_action :find_test, only: [:show, :edit, :update, :destroy]
 
   def index
-    render plain: Test.all.pluck(:title, :body, :level)
+    @tests = Test.all
   end
 
   def new
@@ -20,7 +20,6 @@ class TestsController < ActionController::Base
   end
 
   def show
-    render plain: @test.title
   end
 
   def edit
@@ -46,6 +45,6 @@ class TestsController < ActionController::Base
   end
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :author_id)
+    params.require(:test).permit(:title, :body, :level, :category_id, :author_id)
   end
 end
