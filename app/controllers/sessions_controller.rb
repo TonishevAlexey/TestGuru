@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to cookies[:start_page] || root_path
+      redirect_to cookies[:requested_url] || root_path
     else
       flash.now[:alert] = 'Неправильный логин или пароль'
       redirect_to login_path
