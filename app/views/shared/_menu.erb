@@ -1,16 +1,5 @@
-<div id="nav">
-
-<ul>
-  <% if logged_in? %>
-    <li >Добро пожаловать: <%= current_user.name%></li>
-    <li ><%= link_to "Главная", "/" %></li>
-    <li ><%= link_to 'Выйти', '/logout', method: :delete, data: { confirm: 'Куда пошёл?' } %></li>
-  <% end %>
-
-  <% if !logged_in? %>
-    <li ><%= link_to "Главная", "/" %></li>
-    <li ><%= link_to "Регистрация", "/signup"%></li>
-    <li><%= link_to "Войти", "/login"%></li>
-  <% end %>
-</ul>
-</div>
+<% if user_signed_in? %>
+<p class="nav user">
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+</p>
+<% end %>
