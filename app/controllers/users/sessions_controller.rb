@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
     yield resource if block_given?
-    unless current_user.admin?
+    if current_user.admin?
       respond_with resource, location: tests_path
     else
       respond_with resource, location: admin_tests_path
