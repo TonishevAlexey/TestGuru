@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: t('.message') if current_user.admin?
   end
 
+  def default_url_options
+    I18n.locale != I18n.default_locale ? { lang: I18n.locale } : {}
+  end
+
   def set_locale
     I18n.locale = I18n.locale_available?(params[:lang]) ? params[:lang] : I18n.default_locale
   end
