@@ -1,14 +1,15 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :confirmable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :trackable
   VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.(\w|[a-z]){2,3}\z/i
 
   has_many :test_passages
   has_many :tests, through: :test_passages
   has_many :tests_author, class_name: 'Test'
-  validates :name, :email, presence: true
-  validates :password, presence: true, if: proc { |u| u.password_digest.blank? }
-  validates :password, confirmation: true
-  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL}
-  has_secure_password
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL }
 
   def test_level(level)
     test.where(level: level)
@@ -18,4 +19,7 @@ class User < ApplicationRecord
     test_passages.order(id: :desc).find_by(test_id: test.id)
   end
 
+  def admin?
+    self.type != 'Admin'
+  end
 end

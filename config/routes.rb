@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   root to: 'tests#index'
-  get :signup, to: 'users#new'
-  get :login, to: 'sessions#new'
-  delete :logout, to: 'sessions#destroy'
-
-  resources :users, only: :create
-  resources :sessions, only: :create
-  resources :tests do
-    resources :questions, shallow: true do
-      resources :answers, shallow: true
+  namespace :admin do
+    resources :tests do
+      resources :questions, shallow: true do
+        resources :answers, shallow: true
+      end
     end
+  end
+  resources :tests, only: [:index] do
     member do
       post :start
     end
