@@ -1,9 +1,9 @@
 module TestsHelper
   def test_header(question)
     if question.new_record?
-      "Создать новый  тест #{@test.title}"
+      "#{t('admin.tests.new.header')}"
     else
-      "Измененть тест #{@test.title}"
+      "#{t('admin.tests.edit.header')} #{@test.title}"
     end
   end
 end
