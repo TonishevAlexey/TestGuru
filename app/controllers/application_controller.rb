@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def authenticate_admin!
-    redirect_to root_path, alert: t('.message') if current_user.admin?
+    redirect_to root_path, alert: t('.message') if current_user&.admin? || current_user == nil
   end
 
   def default_url_options

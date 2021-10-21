@@ -3,7 +3,7 @@
     <h3> <%= t('validate_errors.error', count: resource.errors.count) %>: </h3>
     <% resource.errors.full_messages.each do |message| %>
       <ul>
-        <li> <%= message %> </li>
+        <li class="alert alert-danger"> <%= message %> </li>
       </ul>
     <% end %>
   </div>

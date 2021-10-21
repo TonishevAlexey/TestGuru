@@ -1,15 +1,18 @@
 <h1><%=t('.registry') %></h1>
 <br>
 <%= link_to t('.new'), new_admin_test_path %>
-<table>
+<table class="table">
+  <thead class="thead-dark">
   <tr>
-    <th><%=t('.title') %></th>
-    <th><%=t('.level') %></th>
-    <th><%=t('admin.tests.show.category') %></th>
-    <th><%=t('.author') %></th>
-    <th><%=t('.questions') %></th>
-    <th><%=t('.actions') %></th>
+    <th scope="col"><%= t('.title') %></th>
+    <th scope="col"><%= t('.level') %></th>
+    <th scope="col"><%= t('tests.index.сategory') %></th>
+    <th scope="col"><%= t('.author') %></th>
+    <th scope="col"><%= t('.questions') %></th>
+    <th scope="col"><%= t('.actions') %></th>
   </tr>
+  <tbody>
+  </thead>
   <% @tests.each do |test| %>
     <tr>
       <td><%= test.title %></td>

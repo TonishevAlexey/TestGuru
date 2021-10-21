@@ -28,6 +28,7 @@ class Admin::TestsController < ApplicationController
   def update
     if @test.update(test_params)
       redirect_to admin_test_url(@test)
+      flash[:success] = "Тест успешно сохранен"
     else
       render :edit
     end
