@@ -20,6 +20,6 @@ class User < ApplicationRecord
   end
 
   def admin?
-    self.type != 'Admin'
+    self.type == 'Admin'
   end
 end
