@@ -1,14 +1,13 @@
-<h1>Реестр тестов</h1>
+<h1><%=t('.registry') %></h1>
 <br>
-<%#= link_to 'Новый тест', new_test_path %>
 <table>
   <tr>
-    <th>Название</th>
-    <th>Уровень</th>
-    <th>Категория</th>
-    <th>Автор</th>
-    <th>Кол-во вопросов</th>
-    <th>Действия</th>
+    <th><%=t('.title') %></th>
+    <th><%=t('.level') %></th>
+    <th><%=t('tests.index.сategory') %></th>
+    <th><%=t('.author') %></th>
+    <th><%=t('.questions') %></th>
+    <th><%=t('.actions') %></th>
   </tr>
   <% @tests.each do |test| %>
     <tr>
@@ -19,7 +18,7 @@
       <td><%= test.questions.count %></td>
       <td>
         <% unless test.questions.empty? %>
-          <%= button_to 'Начать тест', start_test_path(test) %></td>
+          <%= button_to t('.start'), start_test_path(test) %></td>
         <% end %>
         </tr>
   <% end %>

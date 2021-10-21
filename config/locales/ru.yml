@@ -1,0 +1,61 @@
+ru:
+  hello: "Привет мир"
+
+  show: "Смотреть"
+  edit: "Изменить"
+  delete: "Удалить"
+  back: "Назад"
+  sure: "Вы уверены?"
+  save: "сохранить"
+  shared:
+    menu:
+      logout: "Выйти"
+  application:
+    authenticate_admin!:
+      message: "Зайдите как админичтратор"
+
+  helpers:
+    select:
+      prompt: "Выберите значение"
+  tests:
+    index:
+      registry: "Реестр тестов"
+      title: "Название"
+      level: "Уровень"
+      questions: "Кол-во вопросов"
+      actions: "Действия"
+      author: "Автор"
+      сategory: "Категория"
+      start: "Начать"
+
+  test_passages:
+    result:
+      header: "Результаты теста %{title} "
+      text: "Правильных ответов "
+      all_tests: "Все тесты "
+      success: "Тест  пройден!"
+      fail: "Тест не пройден"
+    show:
+      header: "Тест %{title} "
+      question: "Вопрос %{number} из %{count}"
+      next: "Далее"
+
+  admin:
+    tests:
+      index:
+        registry: "Реестр тестов"
+        title: "Название"
+        level: "Уровень"
+        questions: "Кол-во вопросов"
+        actions: "Действия"
+        author: "Автор"
+        сategory: "Категория"
+        new: "Новый тест"
+      show:
+        title: "Тест %{title}"
+        new_question: "Новый вопрос"
+        questions: "Список вопросов"
+      new:
+        header: "Создать новый Тест"
+      edit:
+        header: "Изменить Тест"

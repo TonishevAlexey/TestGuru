@@ -32,7 +32,7 @@ gem 'bootstrap'
 gem 'bootstrap-sass'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
-
+gem 'rails-i18n', '~> 6.0.0'
 gem 'devise'
 
 group :development, :test do
