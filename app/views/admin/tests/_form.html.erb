@@ -1,4 +1,6 @@
 <h1> <%=test_header(@test) %></h1>
+<%= render 'shared/errors', resource: @test %>
+
 <%= form_with model: [:admin,@test], local: true do |form| %>
 
   <p>
