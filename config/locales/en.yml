@@ -39,8 +39,17 @@ en:
       header: "Test %{title} "
       question: "Question %{number} / %{count}"
       next: "Next"
+    gist:
+      created: "Gist create"
+      error: "An error occurred while creating"
 
   admin:
+    gists:
+      index:
+        registry: "Реестр gists"
+        question: "Question"
+        user: "Email"
+        url: "Link"
     tests:
       index:
         registry: "Registry Tests"
@@ -59,3 +68,6 @@ en:
         header: "Create new Test"
       edit:
         header: "Edit Test"
+  services:
+    gist_question_service:
+      title: "Test question %{test_title}"

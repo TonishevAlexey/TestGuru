@@ -39,8 +39,22 @@ ru:
       header: "Тест %{title} "
       question: "Вопрос %{number} из %{count}"
       next: "Далее"
+    gist:
+      created: "Gist создан"
+      error: "При создании возникла ошибка"
+
+  services:
+    gist_question_service:
+      title: "Вопрос теста %{test_title} "
 
   admin:
+    gists:
+      index:
+        registry: "Реестр gists"
+        question: "Вопросов"
+        user: "Почта пользователя"
+        url: "Ссылка"
+
     tests:
       index:
         registry: "Реестр тестов"
