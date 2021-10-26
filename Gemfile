@@ -34,10 +34,13 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'devise'
+gem 'faraday'
+gem "octokit", "~> 4.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'dotenv-rails'
 end
 
 group :development do

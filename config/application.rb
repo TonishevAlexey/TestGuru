@@ -20,7 +20,7 @@ module TestGuru
 
     I18n.config.available_locales = %i(ru en)
     config.i18n.default_locale = :ru
-
+    config.autoload_paths << "#{Rails.root}/app/services"
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

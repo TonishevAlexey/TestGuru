@@ -1,0 +1,19 @@
+<h1><%=t('.registry') %></h1>
+<br>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col"><%= t('.question') %></th>
+    <th scope="col"><%= t('.user') %></th>
+    <th scope="col"><%= t('.url') %></th>
+  </tr>
+  <tbody>
+  </thead>
+  <% @gists.each do |gist| %>
+    <tr>
+      <td><%= question_title gist.question.title %></td>
+      <td><%= gist.user.email %></td>
+      <td><a href =<%= gist.url %> target="_target">Перейти</a></td>
+    </tr>
+  <% end %>
+</table>
