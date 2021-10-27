@@ -2,9 +2,12 @@
 <br>
 <%= link_to t('.new'), new_admin_test_path %>
 <table class="table">
-  <thead class="thead-dark">
   <tr>
-    <th scope="col"><%= t('.title') %></th>
+    <th  class="sort-by-title pointer">
+      <%= t('.title') %>
+      <%= octicon 'arrow-up', class: 'text-success hide' %>
+      <%= octicon 'arrow-down', class: 'text-success hide' %>
+    </th>
     <th scope="col"><%= t('.level') %></th>
     <th scope="col"><%= t('tests.index.сategory') %></th>
     <th scope="col"><%= t('.author') %></th>
@@ -12,7 +15,6 @@
     <th scope="col"><%= t('.actions') %></th>
   </tr>
   <tbody>
-  </thead>
   <% @tests.each do |test| %>
     <tr>
       <td><%= test.title %></td>
