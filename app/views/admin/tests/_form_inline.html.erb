@@ -1,0 +1,14 @@
+<div class="form-check">
+
+  <%= form_with model: @test,
+                url: update_inline_admin_test_path(test),
+                local: true,
+                class: 'form-inline hide',
+                data: { test_id: test.id },
+                method: :patch do |form| %>
+
+    <%= form.text_field test.title == '' ? "title" : "test[title]", value: test.title %>
+    <br><br>
+    <%= form.submit t('save'), class: 'btn btn-primary' %>
+  <% end %>
+</div>
