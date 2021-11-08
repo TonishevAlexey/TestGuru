@@ -5,13 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-users = User.create!([
+users = User.new([
                        {name: :Eugene, last_name: :Awesome, email: 'exampleadmin@gmail.com', password: :password,type:"Admin"},
                        {name: :Kate, last_name: :Marley, email: 'exampleKate@gmail.com', password: :password},
                        {name: :Alex, last_name: :Hoy, email: 'exampleAlex@gmail.com', password: :password},
                        {name: :Bob, last_name: :Marley, email: 'exampleBob@gmail.com', password: :password}
                      ])
-
+users.skip_confirmation!
+users.save
 categories = Category.create!([
                                 {title: 'Ruby on Rails'},
                                 {title: 'HTML'},
