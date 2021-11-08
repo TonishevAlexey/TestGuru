@@ -1,0 +1,9 @@
+<%= form_with url: contact_messages_path, model: @contact_message do |form| %>
+  <%= form.label "email" %>
+  <%= form.text_field @contact_message&.errors.present? ? "email" : "contact_message[email]", value: current_user.email %>
+  <br>
+  <%= form.label "Текст" %>
+  <%= form.text_area @contact_message&.errors.present? ? "text" : "contact_message[text]" %>
+
+  <%= form.submit "Отправить" %>
+<% end %>

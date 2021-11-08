@@ -21,4 +21,6 @@ Rails.application.routes.draw do
       post :gist
     end
   end
+  resources :contact_messages, only: %i[new create]
+
 end
