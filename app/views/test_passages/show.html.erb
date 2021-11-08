@@ -6,7 +6,7 @@
   <%= @test_passage.current_question&.title %>
 </b>
   <div class="progress-bar"
-       data-current-test = "<%= @test_passage.question_now %>"
+       data-current-test = "<%= @test_passage.question_now - 1 %>"
        data-all-tests = "<%= @test_passage.questions_count %>">
     <p class="progress-bar"></p>
   </div>
