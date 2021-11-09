@@ -2,6 +2,6 @@ class ContactMessage < ApplicationRecord
   belongs_to :user
 
   validates :text, presence: true
-  validates :email, presence: true, format: { with: /@/ }
+  validates :email, presence: true, format: { with: VALID_EMAIL }
 
 end
