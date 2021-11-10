@@ -1,0 +1,4 @@
+Received message from user
+==========================
+
+Text: <%= @contact_message.text %>
