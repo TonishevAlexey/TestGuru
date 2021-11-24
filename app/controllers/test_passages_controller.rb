@@ -3,17 +3,29 @@ class TestPassagesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-
   end
 
   def result
+    if @test_passage.attempt == 1 && @test_passage.success == true && Badge.find_by(kind: 1) != nil
+      current_user.badge.push(Badge.find_by(kind: 1))
+      @badge = Badge.find_by(kind: 1)
 
+    elsif Test.tests_level(@test_passage.test.level).count == current_user.tests.tests_level(@test_passage.test.level).count && current_user.tests.tests_level(@test_passage.test.level).count != nil && Badge.find_by(kind: 0) != nil
+      current_user.badge.push(Badge.find_by(kind: 0))
+      @badge = Badge.find_by(kind: 0)
+
+    elsif Test.tests_category(@test_passage.test.category.title).count == current_user.tests.tests_category(@test_passage.test.category.title).where(test_passages: { success: true }).count && current_user.tests.tests_category(@test_passage.test.category.title).where(test_passages: { success: true }).count != nil && Badge.find_by(kind: 2) != nil
+      current_user.badge.push(Badge.find_by(kind: 2))
+      @badge = Badge.find_by(kind: 2)
+    end
   end
 
   def update
     @test_passage.accept!(params[:answer_ids])
+    @test_passage.next_question
 
     if @test_passage.completed_test?
+      @test_passage.success_test
       redirect_to result_test_passage_path(@test_passage)
     else
       render :show

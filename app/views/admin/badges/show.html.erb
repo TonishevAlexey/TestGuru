@@ -1,0 +1,8 @@
+<h1><%= @badge.title%></h1>
+<br>
+<%= @badge.kind %>
+<p><%= image_tag @badge.image, size: "80x80" %></p>
+<p><%= link_to t('edit'), edit_admin_badge_path(@badge) %></p>
+<p><%= link_to t('back'), admin_badges_path %></p>
+
+

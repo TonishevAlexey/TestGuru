@@ -9,6 +9,10 @@ ru:
         category: "Категория"
         body: "Текст"
         level: "Уровень"
+      badge:
+        kind: "Тип"
+        image: "Картинка"
+        title: "Текст"
     errors:
       messages:
         blank: "не может быть пустым"

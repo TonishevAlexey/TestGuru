@@ -1,10 +1,12 @@
 <nav class="navbar navbar-light bg-light">
   <%= link_to "TestGuru", root_path, class: 'navbar-brand' %>
+  <%= link_to "Badges", badges_path, class: 'navbar-brand' %>
 <% if logged_in? %>
     <% if current_user.admin? %>
       <%= link_to "Управление тестами", admin_tests_path, class: 'navbar-brand' %>
       <%= link_to "Gists", admin_gists_path, class: 'navbar-brand' %>
-    <% end %>
+      <%= link_to "Badges", admin_badges_path, class: 'navbar-brand' %>
+<% end %>
 <p>
   <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: "btn btn-link mr-19" %>
 </p>

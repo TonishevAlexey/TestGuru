@@ -46,7 +46,10 @@ ru:
   services:
     gist_question_service:
       title: "Вопрос теста %{test_title} "
-
+  badge:
+    index:
+      kind: "Тип"
+      image: "Картинка"
   admin:
     gists:
       index:
@@ -54,7 +57,16 @@ ru:
         question: "Вопросов"
         user: "Почта пользователя"
         url: "Ссылка"
+    badge:
+      index:
+        kind: "Тип"
+        image: "Картинка"
+        title: "Текст"
+        actions: "Действия"
 
+      show:
+        kind: "Тип"
+        image: "Картинка"
     tests:
       index:
         registry: "Реестр тестов"
