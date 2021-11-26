@@ -6,18 +6,7 @@ class TestPassagesController < ApplicationController
   end
 
   def result
-    if @test_passage.attempt == 1 && @test_passage.success == true && Badge.find_by(kind: 1) != nil
-      current_user.badge.push(Badge.find_by(kind: 1))
-      @badge = Badge.find_by(kind: 1)
-
-    elsif Test.tests_level(@test_passage.test.level).count == current_user.tests.tests_level(@test_passage.test.level).count && current_user.tests.tests_level(@test_passage.test.level).count != nil && Badge.find_by(kind: 0) != nil
-      current_user.badge.push(Badge.find_by(kind: 0))
-      @badge = Badge.find_by(kind: 0)
-
-    elsif Test.tests_category(@test_passage.test.category.title).count == current_user.tests.tests_category(@test_passage.test.category.title).where(test_passages: { success: true }).count && current_user.tests.tests_category(@test_passage.test.category.title).where(test_passages: { success: true }).count != nil && Badge.find_by(kind: 2) != nil
-      current_user.badge.push(Badge.find_by(kind: 2))
-      @badge = Badge.find_by(kind: 2)
-    end
+    BadgeService.new(@test_passage).add_badge
   end
 
   def update

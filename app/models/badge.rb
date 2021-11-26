@@ -7,15 +7,9 @@ class Badge < ApplicationRecord
   validates :image, presence: true
   validates :kind, presence: true, uniqueness: true
 
-  def give_badge(test)
-    Badge.find_by(kind: 1) if first_badge(test)
-    Badge.find_by(kind: 0) if level_badge(test)
-    Badge.find_by(kind: 2) if category_badge(test)
-
-  end
   def kind_text
     if kind == '0'
-       "Уровень"
+      "Уровень"
     elsif kind == '1'
       "Первый проход"
     elsif kind == '2'

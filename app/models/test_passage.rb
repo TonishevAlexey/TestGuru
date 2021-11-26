@@ -25,11 +25,6 @@ class TestPassage < ApplicationRecord
     current_questions.to_i * 100.0 / test.questions.count
   end
 
-  def add_count
-    self.count += 1
-    save
-  end
-
   def questions_count
     test.questions.count
   end
@@ -42,7 +37,7 @@ class TestPassage < ApplicationRecord
     self.attempt += 1
     self.current_questions = 0
     self.current_question = test.questions.order(id: :asc).first
-    save(validate: false)
+    save
   end
 
   def next_question

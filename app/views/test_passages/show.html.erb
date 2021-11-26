@@ -1,5 +1,4 @@
 <h1><%= t('.header',title: @test_passage.test.title) %> </h1>
-<div class="timer"  data-timer = "<%= @test_passage.test.timer %>"></div>
 <p> <%= t('.question',number:@test_passage.question_now ,count: @test_passage.questions_count) %></p>
 <%= @test_passage.current_question.title %>
 <b>

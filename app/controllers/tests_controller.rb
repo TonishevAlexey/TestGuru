@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_test, only: :start
 
   def index
     @tests = Test.all
@@ -9,11 +10,15 @@ class TestsController < ApplicationController
     tests = current_user.tests
     if tests.exists?(params[:id])
     else
-      tests.push(Test.find(params[:id]))
+      tests.push(@test)
     end
-    current_user.test_passage(Test.find(params[:id])).start
+    current_user.test_passage(@test).start
 
-    # binding.pry
-    redirect_to current_user.test_passage(Test.find(params[:id]))
+    redirect_to current_user.test_passage(@test)
+
+    private
+    def find_test
+      @test = Test.find(params[:id])
+    end
   end
 end
