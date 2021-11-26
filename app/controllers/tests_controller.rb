@@ -15,10 +15,9 @@ class TestsController < ApplicationController
     current_user.test_passage(@test).start
 
     redirect_to current_user.test_passage(@test)
-
+    end
     private
     def find_test
       @test = Test.find(params[:id])
     end
-  end
 end

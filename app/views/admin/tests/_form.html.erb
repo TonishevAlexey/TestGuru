@@ -19,7 +19,10 @@
     <%= form.label :category %>
     <%= form.collection_select :category_id, Category.all, :id, :title, prompt: true %>
   </p>
-
+  <p>
+    <%= form.label :timer %>:
+    <%= form.text_field :timer, id: :test_timer %>
+  </p>
 
   <p><%= form.submit value=t('save')%></p>
 <% end %>
