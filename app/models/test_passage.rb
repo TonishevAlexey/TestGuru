@@ -2,6 +2,7 @@ class TestPassage < ApplicationRecord
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
+  before_update :before_update_next_question
 
   TEST_COMPLETED = 85
 
@@ -40,7 +41,7 @@ class TestPassage < ApplicationRecord
     save
   end
 
-  def next_question
+  def before_update_next_question
     self.current_question = test.questions.where('id > ?', current_question).first
     save
   end

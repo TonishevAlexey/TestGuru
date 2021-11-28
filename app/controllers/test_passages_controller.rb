@@ -11,7 +11,6 @@ class TestPassagesController < ApplicationController
 
   def update
     @test_passage.accept!(params[:answer_ids])
-    @test_passage.next_question
 
     if @test_passage.completed_test?
       @test_passage.success_test
