@@ -6,7 +6,7 @@ class TestPassagesController < ApplicationController
   end
 
   def result
-    BadgeService.new(@test_passage).add_badge
+    BadgeService.new(@test_passage).badge_rule
   end
 
   def update

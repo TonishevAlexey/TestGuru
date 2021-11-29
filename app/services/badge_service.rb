@@ -1,20 +1,20 @@
 class BadgeService
+
   def initialize(test_passage)
     @test_passage = test_passage
     @current_user = test_passage.user
   end
 
-  def add_badge
-    @badge = Badge.find_by(kind: badge_rule)
-  end
-
   private
 
   def badge_rule
-    kind = 0 if level_badge?
-    kind = 1 if first_badge?
-    kind = 2 if category_badge?
-    kind
+    Badge.all.each do |badge|
+      if send("#{badge.rule}_badge?")
+        @current_user.badges << badge
+        @badge = badge
+      end
+    end
+
   end
 
   def first_badge?

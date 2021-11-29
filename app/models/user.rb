@@ -7,7 +7,7 @@ class User < ApplicationRecord
   VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.(\w|[a-z]){2,3}\z/i
 
   has_many :badge_user, dependent: :nullify
-  has_many :badge, through: :badge_user
+  has_many :badges, through: :badge_user
   has_many :test_passages
   has_many :tests, through: :test_passages
 
