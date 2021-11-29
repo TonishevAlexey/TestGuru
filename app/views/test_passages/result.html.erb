@@ -6,11 +6,3 @@
 </p>
 
 <p><%= link_to t('.all_tests'), tests_path %></p>
-<% if @badge %>
-
-<h1><%= @badge.title %>
-  <span class="badge badge-pill badge-success">
-  <%= image_tag @badge.image, size: "80x80" %>
-  </span>
-</h1>
-<%end %>
