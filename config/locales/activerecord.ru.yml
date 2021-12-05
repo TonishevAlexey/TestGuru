@@ -9,6 +9,7 @@ ru:
         category: "Категория"
         body: "Текст"
         level: "Уровень"
+
     errors:
       messages:
         blank: "не может быть пустым"

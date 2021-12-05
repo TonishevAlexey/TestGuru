@@ -1,5 +1,4 @@
 <h1><%=t('.header',title: @test_passage.test.title) %> </h1>
-
 <% @completed = @test_passage.completed? %>
 
 <p> <span><%=t('.text')%><%= @test_passage.current_questions %>(<%= @test_passage.interest.to_i %>%)/<%= @test_passage.test.questions.count %></span></p>

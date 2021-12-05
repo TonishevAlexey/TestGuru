@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       end
     end
     resources :gists, only: %i[index]
+
   end
+
   resources :tests, only: [:index] do
     member do
       post :start

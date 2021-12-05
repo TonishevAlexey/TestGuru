@@ -55,6 +55,9 @@ ru:
         user: "Почта пользователя"
         url: "Ссылка"
 
+      show:
+        kind: "Тип"
+        image: "Картинка"
     tests:
       index:
         registry: "Реестр тестов"
