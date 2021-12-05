@@ -7,18 +7,14 @@ class TestsController < ApplicationController
   end
 
   def start
-    tests = current_user.tests
-
-    tests.push(@test) unless tests.exists?(params[:id])
+    current_user.tests.push(@test)
 
     current_user.test_passage(@test).start
 
     redirect_to current_user.test_passage(@test)
-  end
-
-  private
-
-  def find_test
-    @test = Test.find(params[:id])
-  end
+    end
+    private
+    def find_test
+      @test = Test.find(params[:id])
+    end
 end

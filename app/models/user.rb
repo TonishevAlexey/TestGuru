@@ -28,4 +28,8 @@ class User < ApplicationRecord
   def admin?
     self.type == 'Admin'
   end
+
+  def test_passages_count
+    test_passages.where(test_id: @test_passage.test_id)
+  end
 end

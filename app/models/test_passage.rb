@@ -35,7 +35,6 @@ class TestPassage < ApplicationRecord
   end
 
   def start
-    self.attempt += 1
     self.current_questions = 0
     self.current_question = test.questions.order(id: :asc).first
     save
