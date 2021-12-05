@@ -3,6 +3,7 @@ class Test < ApplicationRecord
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
   scope :tests_category, -> (category) { joins(:category).where(categories: { title: category }) }
+  scope :tests_level, -> (level) { where(level: level ) }
 
   belongs_to :category
   has_many :test_passages, dependent: :destroy
@@ -14,7 +15,7 @@ class Test < ApplicationRecord
   validates :level, numericality: { greater_than_or_equal_to: 0 }
   validates :title, uniqueness: { scope: :level }
 
-  def self.tests_category(category)
-    tests_category(category).order(title: :desc).pluck(:title)
-  end
+  # def self.tests_category(category)
+  #   tests_category(category).order(title: :desc).pluck(:title)
+  # end
 end

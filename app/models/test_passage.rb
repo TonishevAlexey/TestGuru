@@ -2,9 +2,8 @@ class TestPassage < ApplicationRecord
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
+  before_update :before_update_next_question
 
-  before_validation :before_validation_set_first_question, on: :create
-  before_save :before_save_next_question, unless: :new_record?
   TEST_COMPLETED = 85
 
   def accept!(answer_ids)
@@ -35,14 +34,26 @@ class TestPassage < ApplicationRecord
     test.questions.order(id: :asc).to_a.index(current_question) + 1
   end
 
+  def start
+    self.current_questions = 0
+    self.current_question = test.questions.order(id: :asc).first
+    save
+  end
+
+  def before_update_next_question
+    self.current_question = test.questions.where('id > ?', current_question).first
+    save
+  end
+
+  def success_test
+    self.success = true if completed?
+    save
+  end
+
   private
 
   def before_validation_set_first_question
     self.current_question = test.questions.order(id: :asc).first if test.present?
-  end
-
-  def before_save_next_question
-    self.current_question = test.questions.where('id > ?', current_question).first
   end
 
   def correct_answer?(answers_ids)

@@ -1,5 +1,4 @@
 <h1><%=t('.header',title: @test_passage.test.title) %> </h1>
-
 <% @completed = @test_passage.completed? %>
 
 <p> <span><%=t('.text')%><%= @test_passage.current_questions %>(<%= @test_passage.interest.to_i %>%)/<%= @test_passage.test.questions.count %></span></p>
@@ -7,3 +6,11 @@
 </p>
 
 <p><%= link_to t('.all_tests'), tests_path %></p>
+<% if @badge %>
+
+<h1><%= @badge.title %>
+  <span class="badge badge-pill badge-success">
+  <%= image_tag @badge.image, size: "80x80" %>
+  </span>
+</h1>
+<%end %>
