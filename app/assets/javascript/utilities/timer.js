@@ -8,10 +8,9 @@ document.addEventListener('turbolinks:load', function () {
         function startTime() {
             timerSelector.innerHTML = 'Время на прохождение: ' + Math.round(timer) + ' минут'
             if (timer <= 0) {
-                window.location.href = window.location.href + '/result'
-                return
+                document.querySelector('form').submit();
             }
-            setTimeout(startTime, 60000);
+            setTimeout(startTime, 1000);
             timer--
         }
 

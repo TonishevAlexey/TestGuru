@@ -2,6 +2,8 @@ class TestPassage < ApplicationRecord
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
+  before_save :before_save_next_question, unless: :new_record?
+  before_validation :before_validation_set_first_question, on: :create
 
   TEST_COMPLETED = 85
 
@@ -33,27 +35,27 @@ class TestPassage < ApplicationRecord
     test.questions.order(id: :asc).to_a.index(current_question) + 1
   end
 
-  def start
-    self.attempt += 1
-    self.current_questions = 0
-    self.current_question = test.questions.order(id: :asc).first
-    save
-  end
-
-  def next_question
-    self.current_question = test.questions.where('id > ?', current_question).first
-    save
-  end
-
   def success_test
     self.success = true if completed?
     save
   end
 
+  def remaining_seconds
+    ((created_at + test.timer.minutes) - Time.current).to_i
+  end
+
+  def time_out?
+    remaining_seconds <= 0
+  end
+
   private
 
   def before_validation_set_first_question
-    self.current_question = test.questions.order(id: :asc).first if test.present?
+    self.current_question = test.questions.order(id: :asc).first
+  end
+
+  def before_save_next_question
+    self.current_question = test.questions.where('id > ?', current_question).first
   end
 
   def correct_answer?(answers_ids)
